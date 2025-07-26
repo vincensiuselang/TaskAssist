@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import testimoniImage1 from "@assets/WhatsApp Image 2025-07-27 at 06.27.41_a8ee6e66_1753572541213.jpg";
+import testimoniImage2 from "@assets/WhatsApp Image 2025-07-27 at 06.27.41_89416eb6_1753572541214.jpg";
 
 export default function Home() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
@@ -206,11 +208,50 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Kata Mereka yang Udah Terbantu 💬
+              Real Chat dari Client Puas 💬
             </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Liat sendiri gimana proses kerja gue dan testimoni asli dari mahasiswa!
+            </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
+            {/* Chat Testimoni Images */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              <Card className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    📱 Proses Revisi Tugas Real-Time
+                  </h3>
+                  <p className="text-gray-600">
+                    Chat asli dengan client yang puas dengan proses revisi tugas coding
+                  </p>
+                </div>
+                <img 
+                  src={testimoniImage1} 
+                  alt="Chat testimoni proses revisi tugas coding"
+                  className="w-full rounded-lg shadow-md object-cover"
+                />
+              </Card>
+
+              <Card className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    💬 Client Langsung Order!
+                  </h3>
+                  <p className="text-gray-600">
+                    Respon cepet dan langsung siap bantu tugas coding apapun
+                  </p>
+                </div>
+                <img 
+                  src={testimoniImage2} 
+                  alt="Chat testimoni client yang langsung order"
+                  className="w-full rounded-lg shadow-md object-cover"
+                />
+              </Card>
+            </div>
+
+            {/* Text Testimonial */}
             <Card className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-start space-x-4">
                 <img 
