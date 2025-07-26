@@ -1,0 +1,50 @@
+💡 TFCDC Prompt - Website Landing Page Modern untuk Jasa Bantu Tugas
+
+🧠 Think:
+Saya ingin membuat website landing page modern dan profesional yang bisa menampilkan jasa bantu tugas coding & ML. Harus simple, mobile-first, dan ngarahin pengunjung untuk langsung ngehubungi saya via WhatsApp.
+
+❤️ Feel:
+Website harus terasa:
+- Profesional tapi tetap fun
+- Friendly, relatable buat mahasiswa
+- Bikin orang percaya & langsung tertarik order
+
+🌐 Context:
+Target saya adalah mahasiswa IT dan non-IT yang butuh bantuan tugas. Rata-rata langsung nanya via WhatsApp, jadi harus ada tombol WA dengan teks otomatis. Testimoni baru ada satu, jadi cukup ditampilkan satu saja.
+
+✅ Do:
+Buatkan landing page modern dan responsif yang:
+- Menggunakan HTML, CSS, JavaScript, dan Tailwind CSS
+- Memiliki hero section dengan judul dan subjudul promosi jasa (Python, ML, MATLAB, dll)
+- Ada tombol WhatsApp yang langsung membuka chat ke nomor 6285947094014 dengan teks otomatis "Halo, gue mau konsultasi tugas dong :)"
+- Menampilkan layanan yang saya tawarkan (bisa dalam bentuk card atau list)
+- Menampilkan 1 testimoni
+- Memiliki animasi ringan (scroll atau hover effect)
+- Desain modern dan clean
+
+🚫 Constraints:
+- Jangan ada form dulu
+- Jangan banyak teks, cukup to the point
+- Warna dominan biru/ijo + putih (kalem tapi fresh)
+- Jangan pakai framework berat (kayak React), cukup static site
+- Teks pakai bahasa Indonesia
+
+🎯 PRD - Product Requirement Document
+
+Nama Produk: Landing Page Jasa Tugas
+Tipe: Static Modern Landing Page
+Target: Mahasiswa jurusan IT & umum
+
+📌 Fitur:
+1. Hero Section (judul + subjudul + CTA WA)
+2. Layanan Section (Coding, ML, MATLAB, Data Science)
+3. WhatsApp Button (chat langsung, ada teks prefilled)
+4. Testimoni Section (1 testimoni)
+5. Footer (kontak + sosial media placeholder)
+
+🎨 Style Guide:
+- Tailwind CSS
+- Font: bebas asal clean (ex: Inter, Poppins, atau default Tailwind)
+- Icon: FontAwesome atau HeroIcons
+- Layout: mobile-first, responsif
+- Animasi: smooth hover & scroll reveal
