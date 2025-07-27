@@ -51,9 +51,10 @@ Preferred communication style: Simple, everyday language.
 - **Responsive Design**: Tailwind CSS with mobile-first approach
 
 ### Backend Services
-- **API Routes**: RESTful endpoints with /api prefix
+- **API Routes**: RESTful endpoints with /api prefix and comprehensive rate limiting
 - **Storage Interface**: Database storage layer using PostgreSQL with Drizzle ORM
-- **Session Management**: PostgreSQL session store configuration
+- **Session Management**: Secure PostgreSQL session store with HTTPS-only cookies
+- **Security Layer**: Multi-layered security with Helmet, CORS, XSS protection, SQL injection prevention
 - **Development Server**: Vite integration for hot reloading
 
 ## Data Flow
@@ -110,8 +111,13 @@ Preferred communication style: Simple, everyday language.
 - **API Design**: RESTful architecture supports horizontal scaling
 - **Session Storage**: PostgreSQL-backed sessions for stateful authentication
 
-### Security Measures
-- **Environment Variables**: Sensitive configuration via DATABASE_URL
-- **CORS Configuration**: Controlled cross-origin requests
-- **Input Validation**: Zod schemas for request/response validation
-- **Session Security**: Secure session management with PostgreSQL storage
+### Security Measures (Enhanced - July 27, 2025)
+- **Multi-Layer Protection**: Helmet.js for security headers, CORS, rate limiting, XSS prevention
+- **Input Validation**: Comprehensive validation with Zod schemas, SQL injection prevention, XSS filtering
+- **Session Security**: Secure sessions with HttpOnly cookies, SameSite protection, HTTPS enforcement
+- **Database Security**: Connection pooling, SSL encryption, prepared statements via Drizzle ORM
+- **Rate Limiting**: Tiered rate limiting (general, API, strict) with IP-based tracking
+- **Content Security Policy**: Strict CSP headers preventing code injection attacks
+- **Environment Variables**: Secure configuration management with validation
+- **Error Handling**: Sanitized error responses preventing information leakage
+- **Security Monitoring**: Health check endpoints and security header validation

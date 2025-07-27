@@ -1,10 +1,83 @@
 import express, { type Request, Response, NextFunction } from "express";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import cors from "cors";
+import hpp from "hpp";
+import mongoSanitize from "express-mongo-sanitize";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { securityConfig } from "./config/security";
+import { preventSQLInjection, preventXSS, setSecurityHeaders } from "./middleware/security";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+// Trust proxy for accurate IP detection - needed for Replit
+app.set('trust proxy', 1);
+
+// Security middleware
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: securityConfig.csp.directives,
+  },
+  crossOriginEmbedderPolicy: false,
+}));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: securityConfig.rateLimiting.windowMs,
+  max: securityConfig.rateLimiting.general.max,
+  message: {
+    error: "Too many requests from this IP, please try again later."
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+export const strictLimiter = rateLimit({
+  windowMs: securityConfig.rateLimiting.windowMs,
+  max: securityConfig.rateLimiting.strict.max,
+  message: {
+    error: "Too many requests, please try again later."
+  }
+});
+
+export const apiLimiter = rateLimit({
+  windowMs: securityConfig.rateLimiting.windowMs,
+  max: securityConfig.rateLimiting.api.max,
+  message: {
+    error: "API rate limit exceeded, please try again later."
+  }
+});
+
+app.use(limiter);
+
+// CORS configuration
+app.use(cors(securityConfig.cors));
+
+// Prevent HTTP Parameter Pollution
+app.use(hpp());
+
+// Data sanitization against NoSQL injection attacks
+app.use(mongoSanitize());
+
+// Custom security middleware
+app.use(setSecurityHeaders);
+app.use(preventSQLInjection);
+app.use(preventXSS);
+
+// Body parsing with size limits
+app.use(express.json({ limit: securityConfig.validation.maxBodySize }));
+app.use(express.urlencoded({ extended: false, limit: securityConfig.validation.maxBodySize }));
+
+// Security headers
+app.use((req, res, next) => {
+  Object.entries(securityConfig.headers).forEach(([header, value]) => {
+    if (value) {
+      res.setHeader(header, value);
+    }
+  });
+  next();
+});
 
 app.use((req, res, next) => {
   const start = Date.now();
