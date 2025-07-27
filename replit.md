@@ -52,7 +52,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Backend Services
 - **API Routes**: RESTful endpoints with /api prefix
-- **Storage Interface**: Abstracted storage layer supporting both memory and database implementations
+- **Storage Interface**: Database storage layer using PostgreSQL with Drizzle ORM
 - **Session Management**: PostgreSQL session store configuration
 - **Development Server**: Vite integration for hot reloading
 
